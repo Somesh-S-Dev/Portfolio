@@ -118,6 +118,6 @@ export interface TimelineEvent {
   highlight: boolean;    // Whether to visually emphasise this node
 }
 
-export type WeatherCondition = 'sunny' | 'cloudy' | 'rain' | 'breeze' | 'unknown';
+export type WeatherCondition = 'none' | 'sunny' | 'cloudy' | 'rain' | 'breeze' | 'snow' | 'unknown';
 export type TimeTheme = 'dawn' | 'morning' | 'noon' | 'afternoon' | 'evening' | 'night';
 export type ThemeMode = 'dynamic' | 'light' | 'dark';

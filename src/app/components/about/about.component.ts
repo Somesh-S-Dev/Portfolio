@@ -48,12 +48,23 @@ export class AboutComponent implements OnInit, AfterViewInit {
     setTimeout(type, 500);
   }
 
-  getSkillGroups(profile: Profile): { label: string; icon: string; items: string[] }[] {
+  getInitials(name: string | undefined | null): string {
+    if (!name) return '';
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .slice(0, 2)
+      .toUpperCase();
+  }
+
+
+  getSkillGroups(profile: Profile): { key: string; label: string; icon: string; items: string[] }[] {
     return [
-      { label: 'Languages', icon: '{ }', items: profile.skills.languages },
-      { label: 'Frameworks', icon: '⚙️', items: profile.skills.frameworks },
-      { label: 'Tools', icon: '🛠️', items: profile.skills.tools },
-      { label: 'Expertise', icon: '⚡', items: profile.skills.other },
+      { key: 'languages', label: 'Languages', icon: '{ }', items: profile.skills.languages },
+      { key: 'frameworks', label: 'Frameworks', icon: '⚙️', items: profile.skills.frameworks },
+      { key: 'tools', label: 'Tools', icon: '🛠️', items: profile.skills.tools },
+      { key: 'other', label: 'Expertise', icon: '⚡', items: profile.skills.other },
     ];
   }
 }

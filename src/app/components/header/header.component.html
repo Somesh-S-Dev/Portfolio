@@ -5,7 +5,7 @@
       <span class="role-badge">
         <span class="live-dot"></span>
         <span class="role-text">{{ profile()!.currentRole }}</span>
-        <span class="separator">@</span>
+        <span class="separator">{{ '@' }}</span>
         <span class="company">{{ profile()!.currentCompany }}</span>
       </span>
       <span class="tenure mono">{{ tenure() }}</span>
@@ -19,14 +19,27 @@
       </button>
     </nav>
 
-    <!-- Right: Theme Switcher -->
+    <!-- Right: Climate Slider + Theme Toggle + Theme Pill -->
     <div class="theme-controls">
-      <!-- Dynamic / Static toggle -->
-      <div class="mode-toggle" [class.dynamic]="themeService.mode() === 'dynamic'" (click)="setMode(themeService.mode() === 'dynamic' ? 'dark' : 'dynamic')">
-        <div class="toggle-pill">
-          <span class="toggle-label left">Static</span>
-          <div class="toggle-thumb"></div>
-          <span class="toggle-label right">Dynamic</span>
+      <!-- Climate Effect Slider -->
+      <div class="climate-slider-wrap">
+        <div class="climate-labels">
+          <span *ngFor="let opt of climateOptions; let i = index" class="climate-label"
+            [class.active]="climateIndex() === i" (click)="setClimateByIndex(i)">
+            {{ opt.icon }}
+          </span>
+        </div>
+        <input type="range" class="climate-slider" min="0" [max]="climateOptions.length - 1" step="1"
+          [value]="climateIndex()" (input)="setClimate($event)">
+      </div>
+
+      <!-- Dynamic / Static sliding toggle -->
+      <div class="mode-toggle" [class.dynamic]="themeService.mode() === 'dynamic'"
+        (click)="setMode(themeService.mode() === 'dynamic' ? 'dark' : 'dynamic')">
+        <div class="toggle-track">
+          <span class="toggle-label" [class.active]="themeService.mode() !== 'dynamic'">Static</span>
+          <span class="toggle-label" [class.active]="themeService.mode() === 'dynamic'">Dynamic</span>
+          <div class="toggle-slider"></div>
         </div>
       </div>
 
@@ -36,15 +49,17 @@
         <i class="fas fa-chevron-down" [class.rotated]="showThemePanel()"></i>
       </button>
 
-      <!-- Theme Panel -->
+      <!-- Theme Panel dropdown -->
       <div class="theme-panel glass embossed" *ngIf="showThemePanel()" (click)="$event.stopPropagation()">
-        <button *ngFor="let opt of themeOptions" class="theme-option" [class.active]="themeService.mode() === opt.mode" (click)="setMode(opt.mode)">
-          {{ opt.label }}
+        <button class="theme-option" [class.active]="themeService.mode() === 'dynamic'"
+          (click)="selectTheme('dynamic')">
+          🕐 Dynamic (Auto)
         </button>
-        <!-- Light/Dark quick switch (visible when static) -->
-        <div class="light-dark-switch" *ngIf="themeService.mode() !== 'dynamic'">
-          <button class="ld-btn" [class.active]="themeService.currentTheme() === 'morning'" (click)="setMode('light')">☀️</button>
-          <button class="ld-btn" [class.active]="themeService.currentTheme() === 'night'" (click)="setMode('dark')">🌙</button>
+        <div class="light-dark-switch">
+          <button class="ld-btn" [class.active]="themeService.currentTheme() === 'morning'"
+            (click)="selectTheme('light')">☀️</button>
+          <button class="ld-btn" [class.active]="themeService.currentTheme() === 'night'"
+            (click)="selectTheme('dark')">🌙</button>
         </div>
       </div>
     </div>

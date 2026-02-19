@@ -33,10 +33,17 @@ export class WeatherBgComponent implements OnInit {
     size: 1 + Math.random() * 2.5,
     delay: Math.random() * 4
   }));
+  snowflakes = Array.from({ length: 60 }, () => ({
+    x: Math.random() * 100,
+    size: 2 + Math.random() * 4,
+    delay: Math.random() * 5,
+    speed: 4 + Math.random() * 6,
+    drift: -20 + Math.random() * 40
+  }));
 
   get isNight(): boolean {
     return ['night', 'evening'].includes(this.themeService.currentTheme());
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

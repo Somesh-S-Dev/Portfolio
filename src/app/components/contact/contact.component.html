@@ -63,12 +63,19 @@
       <!-- Messages Thread -->
       <div class="message-panel glass embossed" [class.active]="isSessionMode()">
         <div class="messages-list" *ngIf="messages().length > 0">
-          <div *ngFor="let msg of messages()" class="message-bubble" [class]="msg.status">
-            <div class="msg-content">{{ msg.message }}</div>
-            <div class="msg-meta">
-              <span class="msg-time mono">{{ msg.timestamp | date:'hh:mm a' }}</span>
-              <span class="msg-status">
-                <i class="fas" [class.fa-clock]="msg.status === 'sending'" [class.fa-check-double]="msg.status === 'sent'" [class.fa-exclamation-circle]="msg.status === 'error'"></i>
+          <div *ngFor="let msg of messages()" class="notif-card glass" [class]="msg.status">
+            <div class="notif-icon">
+              <i class="fas fa-paper-plane"></i>
+            </div>
+            <div class="notif-body">
+              <p class="notif-text">{{ msg.message }}</p>
+            </div>
+            <div class="notif-meta">
+              <span class="notif-time mono">{{ msg.timestamp | date:'hh:mm a' }}</span>
+              <span class="notif-status">
+                <i class="fas" [class.fa-clock]="msg.status === 'sending'"
+                  [class.fa-check-double]="msg.status === 'sent'"
+                  [class.fa-exclamation-circle]="msg.status === 'error'"></i>
               </span>
             </div>
           </div>
@@ -86,17 +93,14 @@
 
         <!-- Compose -->
         <div class="compose-row" [class.disabled]="!isSessionMode()">
-          <textarea
-            class="compose-input glass"
-            [(ngModel)]="newMessage"
-            placeholder="Type your message..."
-            [disabled]="!isSessionMode() || isSending()"
-            rows="3"
-            (keydown.ctrl.enter)="sendMessage()">
+          <textarea class="compose-input glass" [(ngModel)]="newMessage" placeholder="Type your message..."
+            [disabled]="!isSessionMode() || isSending()" rows="3" (keydown.ctrl.enter)="sendMessage()">
           </textarea>
-          <button class="send-btn btn-glow" (click)="sendMessage()" [disabled]="!isSessionMode() || !newMessage.trim() || isSending()">
+          <button class="send-btn btn-glow" (click)="sendMessage()"
+            [disabled]="!isSessionMode() || !newMessage.trim() || isSending()">
             <span>
-              <i class="fas" [class.fa-paper-plane]="!isSending()" [class.fa-spinner]="isSending()" [class.fa-spin]="isSending()"></i>
+              <i class="fas" [class.fa-paper-plane]="!isSending()" [class.fa-spinner]="isSending()"
+                [class.fa-spin]="isSending()"></i>
               {{ isSending() ? 'Sending...' : 'Send' }}
             </span>
           </button>

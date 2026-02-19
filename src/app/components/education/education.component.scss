@@ -3,7 +3,9 @@
   grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
   gap: 28px;
 
-  @media (max-width: 600px) { grid-template-columns: 1fr; }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .edu-card {
@@ -11,32 +13,40 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   min-height: 340px;
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
   cursor: default;
 
   &:hover {
     transform: translateY(-8px) scale(1.01);
     box-shadow: 0 24px 80px var(--accent-glow), var(--shadow-deep);
 
-    .edu-bg { transform: scale(1.05); opacity: 0.18; }
+    .edu-bg {
+      transform: scale(1.05);
+      opacity: 0.25;
+    }
   }
 }
 
 .edu-bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.08;
-  transition: all 0.6s ease;
-  filter: blur(2px) saturate(0.7);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right 10%; // Position it slightly to the right
+  opacity: 0.30;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  // filter: blur(4px) saturate(0); // Grayscale for better merging
+  mix-blend-mode: luminosity; // Merges beautifully with the surface color
 }
 
 .edu-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 60%, var(--accent-glow) 100%);
-  opacity: 0.6;
+  background: linear-gradient(90deg,
+      var(--bg-primary) 15%,
+      color-mix(in srgb, var(--bg-primary), transparent 40%) 50%,
+      transparent 100%);
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -67,7 +77,9 @@
   font-weight: 600;
   letter-spacing: 0.05em;
 
-  i { font-size: 1rem; }
+  i {
+    font-size: 1rem;
+  }
 }
 
 .year-chip {
@@ -77,9 +89,22 @@
   padding: 6px 14px;
   border-radius: 999px;
   border: 1px solid var(--glass-border);
+  &:hover {
+    border-color: var(--accent-1);
+    color: var(--accent-1);
+    background: color-mix(in srgb, var(--accent-1) 22%, transparent);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--accent-1) 30%, transparent);
+  }
+  .year-range {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
 
-  .year-range { font-size: 0.85rem; color: var(--text-primary); font-weight: 600; }
-  .year-dur { font-size: 0.72rem; color: var(--text-muted); }
+  .year-dur {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
 }
 
 .institution {
@@ -111,19 +136,29 @@
   border-radius: 999px;
   border: 1px solid var(--glass-border);
   box-shadow: inset 1px 1px 0 var(--emboss-light);
-
+  &:hover {
+    border-color: var(--accent-1);
+    color: var(--accent-1);
+    background: color-mix(in srgb, var(--accent-1) 22%, transparent);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--accent-1) 30%, transparent);
+  }
   .stat-label {
     font-size: 0.7rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
+
   .stat-value {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-primary);
   }
-  i { color: var(--accent-2); font-size: 0.8rem; }
+
+  i {
+    color: var(--accent-2);
+    font-size: 0.8rem;
+  }
 }
 
 .highlights {
@@ -150,4 +185,6 @@
   box-shadow: 0 0 6px var(--accent-glow);
 }
 
-.section-title { margin-bottom: 40px; }
+.section-title {
+  margin-bottom: 40px;
+}

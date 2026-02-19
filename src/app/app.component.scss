@@ -8,25 +8,4 @@
   padding-top: 72px; // header height
 }
 
-.top-sections {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
 
-  @media (max-width: 1100px) {
-    grid-template-columns: 1fr;
-  }
-
-  // Make about and contact full-height aligned sections
-  app-about, app-contact {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  app-contact {
-    border-left: 1px solid var(--glass-border);
-
-    @media (max-width: 1100px) { border-left: none; border-top: 1px solid var(--glass-border); }
-  }
-}

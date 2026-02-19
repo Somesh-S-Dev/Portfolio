@@ -28,30 +28,22 @@
 
   <!-- The horizontal scrollable rail -->
   <div class="tl-rail" #rail>
-    <div class="tl-track" #track>
+    <div class="tl-track" #track [style.min-width.px]="yearMarkers().length * 800">
+
 
       <!-- Spine line -->
       <div class="tl-spine"></div>
 
       <!-- Year markers -->
-      <ng-container *ngFor="let ev of events(); let i = index">
-        <div *ngIf="i === 0 || formatYear(ev.date) !== formatYear(events()[i-1].date)"
-          class="tl-year-marker"
-          [style.left.%]="getRelativeX(i, events().length)">
-          <span class="year-label mono">{{ formatYear(ev.date) }}</span>
-          <div class="year-tick"></div>
-        </div>
-      </ng-container>
+      <div *ngFor="let year of yearMarkers()" class="tl-year-marker" [style.left.%]="getYearX(year)">
+        <span class="year-label mono">{{ year }}</span>
+        <div class="year-tick"></div>
+      </div>
 
       <!-- Nodes -->
-      <div *ngFor="let ev of events(); let i = index"
-        class="tl-node-wrap"
-        [class]="getLabelSide(i)"
-        [class.active]="activeId() === ev.id"
-        [class.highlight]="ev.highlight"
-        [style.left.%]="getRelativeX(i, events().length)"
-        (click)="onNodeClick(ev, $event)"
-        [attr.title]="ev.label">
+      <div *ngFor="let ev of events(); let i = index" class="tl-node-wrap" [class]="getLabelSide(i)"
+        [class.active]="activeId() === ev.id" [class.highlight]="ev.highlight" [style.left.%]="getRelativeX(ev.date)"
+        (click)="onNodeClick(ev, $event)" [attr.title]="ev.label">
 
         <!-- Connector stem (above or below spine) -->
         <div class="tl-stem"></div>
@@ -83,11 +75,31 @@
       </div>
 
       <!-- "Today" marker -->
-      <div class="tl-today-marker">
+      <div class="tl-today-marker" [style.left.%]="todayPercentage()">
         <div class="today-line"></div>
-        <span class="today-badge mono">Today</span>
+        <div class="today-badge-wrap">
+          <span class="today-badge mono">Today</span>
+          <div class="today-info glass embossed">
+            <div class="info-label mono">Current Time</div>
+            <div class="info-value">{{ currentTimeString() }}</div>
+          </div>
+        </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Mini timeline scrubber -->
+  <div class="tl-scrubber-container container">
+    <div class="tl-sub-title mono">Quick Select</div>
+    <div class="tl-mini-scrubber glass embossed">
+      <div *ngFor="let year of yearMarkers()" class="scrubber-year mono" [class.active]="activeYear() === year"
+        (click)="jumpToYear(year)">
+        {{ year }}
+      </div>
+    </div>
+    <div class="scrubber-hint mono">
+      <i class="fas fa-magic"></i> Click any year to jump to that period
     </div>
   </div>
 </section>

@@ -1,0 +1,93 @@
+<section class="timeline-section" id="timeline" *ngIf="events().length">
+  <div class="tl-header container">
+    <div class="tl-title-row">
+      <h2 class="section-title">My Journey</h2>
+      <div class="tl-legend">
+        <span *ngFor="let entry of [
+          {type:'education',   label:'Education'},
+          {type:'work',        label:'Work'},
+          {type:'certification',label:'Certs'},
+          {type:'project',     label:'Project'},
+          {type:'achievement', label:'Achievement'}
+        ]" class="legend-pill">
+          <span class="legend-dot" [style.background]="getTypeColor(entry.type)"></span>
+          <span>{{ entry.label }}</span>
+        </span>
+      </div>
+    </div>
+    <p class="tl-hint mono">
+      <i class="fas fa-hand-pointer"></i> Drag or scroll &nbsp;·&nbsp;
+      <i class="fas fa-mouse-pointer"></i> Click a node to jump to that section
+    </p>
+  </div>
+
+  <!-- Progress scrubber -->
+  <div class="tl-progress-bar">
+    <div class="tl-progress-fill" [style.width.%]="progressWidth()"></div>
+  </div>
+
+  <!-- The horizontal scrollable rail -->
+  <div class="tl-rail" #rail>
+    <div class="tl-track" #track>
+
+      <!-- Spine line -->
+      <div class="tl-spine"></div>
+
+      <!-- Year markers -->
+      <ng-container *ngFor="let ev of events(); let i = index">
+        <div *ngIf="i === 0 || formatYear(ev.date) !== formatYear(events()[i-1].date)"
+          class="tl-year-marker"
+          [style.left.%]="getRelativeX(i, events().length)">
+          <span class="year-label mono">{{ formatYear(ev.date) }}</span>
+          <div class="year-tick"></div>
+        </div>
+      </ng-container>
+
+      <!-- Nodes -->
+      <div *ngFor="let ev of events(); let i = index"
+        class="tl-node-wrap"
+        [class]="getLabelSide(i)"
+        [class.active]="activeId() === ev.id"
+        [class.highlight]="ev.highlight"
+        [style.left.%]="getRelativeX(i, events().length)"
+        (click)="onNodeClick(ev, $event)"
+        [attr.title]="ev.label">
+
+        <!-- Connector stem (above or below spine) -->
+        <div class="tl-stem"></div>
+
+        <!-- Node circle -->
+        <div class="tl-node glass embossed" [style.--node-color]="getTypeColor(ev.type)">
+          <i class="fas" [class]="ev.icon"></i>
+          <div class="node-ring"></div>
+          <div class="node-pulse" *ngIf="ev.highlight"></div>
+        </div>
+
+        <!-- Label card -->
+        <div class="tl-label glass embossed" [class.expanded]="expandedId() === ev.id">
+          <span class="tl-type-badge mono" [style.color]="getTypeColor(ev.type)">
+            {{ getTypeLabel(ev.type) }}
+          </span>
+          <p class="tl-label-text">{{ ev.label }}</p>
+          <p class="tl-date mono">{{ formatDate(ev.date) }}</p>
+
+          <!-- Expanded detail card -->
+          <div class="tl-detail" *ngIf="expandedId() === ev.id">
+            <p class="tl-detail-text">{{ ev.detail }}</p>
+            <button class="tl-go-btn" (click)="$event.stopPropagation(); scrollToSection(ev.sectionId)">
+              <i class="fas fa-arrow-right"></i>
+              <span>Go to section</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- "Today" marker -->
+      <div class="tl-today-marker">
+        <div class="today-line"></div>
+        <span class="today-badge mono">Today</span>
+      </div>
+
+    </div>
+  </div>
+</section>

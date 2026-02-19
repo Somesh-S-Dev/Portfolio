@@ -1,0 +1,53 @@
+<section class="portfolio-section" id="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-grid">
+      <div *ngFor="let edu of education(); let i = index" class="edu-card glass embossed reveal" [class]="'reveal-delay-' + i">
+
+        <!-- Background image -->
+        <div class="edu-bg" [style.background-image]="'url(' + edu.image + ')'"></div>
+        <div class="edu-overlay"></div>
+
+        <!-- Content -->
+        <div class="edu-content">
+          <!-- Header row -->
+          <div class="edu-top">
+            <div class="degree-badge">
+              <i class="fas fa-graduation-cap"></i>
+              <span class="mono">{{ edu.degree }}</span>
+            </div>
+            <div class="year-chip glass">
+              <span class="year-range mono">{{ yearRange(edu) }}</span>
+              <span class="year-dur">{{ duration(edu) }}</span>
+            </div>
+          </div>
+
+          <!-- Institution -->
+          <h3 class="institution">{{ edu.institution }}</h3>
+          <p class="stream">{{ edu.stream }}</p>
+
+          <!-- Stats row -->
+          <div class="edu-stats">
+            <div class="stat-pill glass">
+              <span class="stat-label mono">CGPA</span>
+              <span class="stat-value text-gradient">{{ edu.cgpa }}</span>
+            </div>
+            <div class="stat-pill glass">
+              <i class="fas fa-map-marker-alt"></i>
+              <span class="stat-value">{{ edu.location }}</span>
+            </div>
+          </div>
+
+          <!-- Highlights -->
+          <div class="highlights" *ngIf="edu.highlights.length">
+            <div *ngFor="let h of edu.highlights" class="highlight-item">
+              <span class="highlight-dot"></span>
+              <span>{{ h }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

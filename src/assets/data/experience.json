@@ -1,0 +1,49 @@
+[
+  {
+    "id": "exp1",
+    "company": "Awesome Corp",
+    "logo": "assets/images/experience/awesome-corp.png",
+    "role": "Software Engineer",
+    "type": "full-time",
+    "dateFrom": "2024-06-01",
+    "dateTo": null,
+    "location": "Chennai, India (Hybrid)",
+    "description": "Building scalable microservices and real-time data pipelines powering 2M+ daily active users. Architecting cloud-native solutions on AWS with Kubernetes orchestration.",
+    "tasks": [
+      "Designed and built RESTful microservices in Python/FastAPI serving 50k RPM",
+      "Reduced API response time by 40% via Redis caching and query optimization",
+      "Led migration of monolith to microservices, improving deployment frequency 3x",
+      "Built real-time event streaming pipeline using Apache Kafka"
+    ],
+    "projects": [
+      "Real-time Analytics Dashboard",
+      "User Authentication & Authorization Platform",
+      "Internal Developer Portal"
+    ],
+    "techStack": ["Python", "FastAPI", "AWS", "Kubernetes", "Kafka", "Redis", "PostgreSQL"],
+    "certificateImage": "assets/images/experience/awesome-corp-cert.jpg"
+  },
+  {
+    "id": "exp2",
+    "company": "Tech Startup Inc.",
+    "logo": "assets/images/experience/techstartup.png",
+    "role": "Software Development Intern",
+    "type": "internship",
+    "dateFrom": "2023-06-01",
+    "dateTo": "2023-11-30",
+    "location": "Remote",
+    "description": "Developed full-stack features for a SaaS product serving 10k+ users. Worked closely with senior engineers and product managers in an agile environment.",
+    "tasks": [
+      "Built React UI components used by 10k+ daily users",
+      "Integrated third-party payment gateway (Razorpay)",
+      "Wrote unit and integration tests achieving 85% code coverage",
+      "Participated in bi-weekly sprint planning and retrospectives"
+    ],
+    "projects": [
+      "Customer Onboarding Flow Redesign",
+      "Subscription Management Module"
+    ],
+    "techStack": ["React", "Node.js", "MongoDB", "Express", "TypeScript"],
+    "certificateImage": "assets/images/experience/techstartup-cert.jpg"
+  }
+]

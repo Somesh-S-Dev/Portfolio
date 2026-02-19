@@ -1,0 +1,34 @@
+<div class="weather-stage" [class]="themeService.weather()">
+  <!-- Sunny: Light rays -->
+  <ng-container *ngIf="themeService.weather() === 'sunny'">
+    <div class="sun-core"></div>
+    <div *ngFor="let ray of rays; let i = index" class="light-ray" [style.--i]="i"></div>
+    <div class="sun-haze"></div>
+  </ng-container>
+
+  <!-- Cloudy: Drifting clouds -->
+  <ng-container *ngIf="themeService.weather() === 'cloudy'">
+    <div *ngFor="let c of clouds; let i = index" class="cloud" [style.--i]="i" [style.--speed]="c.speed + 's'" [style.--size]="c.size" [style.--top]="c.top + '%'"></div>
+  </ng-container>
+
+  <!-- Rain: Droplets -->
+  <ng-container *ngIf="themeService.weather() === 'rain'">
+    <div *ngFor="let d of drops; let i = index" class="rain-drop" [style.--i]="i" [style.--x]="d.x + '%'" [style.--delay]="d.delay + 's'" [style.--speed]="d.speed + 's'"></div>
+    <div class="rain-mist"></div>
+  </ng-container>
+
+  <!-- Breeze: Flowing air + leaf -->
+  <ng-container *ngIf="themeService.weather() === 'breeze'">
+    <div *ngFor="let s of streams; let i = index" class="air-stream" [style.--i]="i" [style.--top]="s.top + '%'" [style.--speed]="s.speed + 's'"></div>
+    <div class="leaf" [style.--leaf-dur]="'12s'"></div>
+    <div class="leaf leaf-2" [style.--leaf-dur]="'18s'"></div>
+  </ng-container>
+
+  <!-- Stars for night theme -->
+  <div class="stars-layer" *ngIf="isNight">
+    <div *ngFor="let s of stars; let i = index" class="star" [style.left]="s.x + '%'" [style.top]="s.y + '%'" [style.--size]="s.size + 'px'" [style.--delay]="s.delay + 's'"></div>
+  </div>
+
+  <!-- Ambient gradient mesh -->
+  <div class="ambient-mesh"></div>
+</div>

@@ -1,0 +1,85 @@
+<section class="portfolio-section" id="projects">
+  <div class="container">
+    <button class="section-title-btn" (click)="goToGithub()">
+      <h2 class="section-title">Projects</h2>
+      <i class="fab fa-github github-icon"></i>
+      <span class="github-hint mono">View all on GitHub ↗</span>
+    </button>
+
+    <!-- Loading -->
+    <div class="projects-loading" *ngIf="loading()">
+      <div *ngFor="let i of [1,2,3,4,5,6]" class="skeleton-card glass"></div>
+    </div>
+
+    <!-- Error -->
+    <div class="projects-error glass embossed" *ngIf="error()">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p>Could not load GitHub projects. Check your username in profile.json.</p>
+    </div>
+
+    <!-- Grid -->
+    <div class="projects-grid" *ngIf="!loading() && !error()">
+      <div *ngFor="let repo of repos(); let i = index"
+        class="project-card glass embossed reveal"
+        [class]="'reveal-delay-' + (i % 6)"
+        (click)="openRepo(repo)">
+
+        <!-- Top -->
+        <div class="proj-top">
+          <div class="proj-icon">
+            <i class="fas fa-code-branch"></i>
+          </div>
+          <div class="proj-stars">
+            <i class="fas fa-star"></i>
+            <span>{{ repo.stargazers_count }}</span>
+          </div>
+        </div>
+
+        <!-- Name & desc -->
+        <h3 class="proj-name">{{ repo.name }}</h3>
+        <p class="proj-desc">{{ repo.description || 'No description available.' }}</p>
+
+        <!-- Meta -->
+        <div class="proj-meta">
+          <div class="lang-dot" *ngIf="repo.language">
+            <span class="lang-circle" [style.background]="getLangColor(repo.language)"></span>
+            <span class="mono">{{ repo.language }}</span>
+          </div>
+          <span class="proj-date mono">{{ formatDate(repo.updated_at) }}</span>
+        </div>
+
+        <!-- License -->
+        <div class="proj-license" *ngIf="repo.license">
+          <i class="fas fa-balance-scale"></i>
+          <span class="mono">{{ repo.license.name }}</span>
+        </div>
+
+        <div class="proj-cta">
+          <span>View README</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- README Popup -->
+  <div class="popup-overlay" *ngIf="selectedRepo()" [class.closing]="isClosing()" (click)="onOverlayClick($event)" (keydown.escape)="closePopup()">
+    <div class="readme-popup glass embossed popup-content" [class.closing]="isClosing()" tabindex="0">
+      <button class="popup-close" (click)="closePopup()"><i class="fas fa-times"></i></button>
+      <div class="readme-header">
+        <div class="readme-repo-info">
+          <i class="fas fa-book-open"></i>
+          <h3>{{ selectedRepo()?.name }}</h3>
+        </div>
+        <a [href]="selectedRepo()?.html_url" target="_blank" class="btn-glow sm-btn">
+          <span><i class="fab fa-github"></i> Open on GitHub</span>
+        </a>
+      </div>
+      <div class="readme-loading" *ngIf="readmeLoading()">
+        <div class="loading-spinner"></div>
+        <span>Loading README...</span>
+      </div>
+      <div class="readme-content" *ngIf="!readmeLoading()" [innerHTML]="readmeHtml()"></div>
+    </div>
+  </div>
+</section>

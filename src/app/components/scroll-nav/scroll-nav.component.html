@@ -1,0 +1,12 @@
+<div class="float-nav">
+  <!-- Scroll to top -->
+  <button class="float-btn top-btn glass embossed" [class.visible]="showTop()" (click)="scrollToTop()" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- LinkedIn DM -->
+  <button class="float-btn linkedin-btn glass embossed" (click)="openLinkedIn()" title="Message on LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+    <span class="float-label">DM Me</span>
+  </button>
+</div>

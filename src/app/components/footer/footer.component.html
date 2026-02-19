@@ -1,0 +1,54 @@
+<footer class="portfolio-footer glass" *ngIf="profile() as p">
+  <div class="footer-inner container">
+
+    <!-- Left: Address Info -->
+    <div class="footer-col">
+      <h3 class="footer-brand">{{ p.name }}</h3>
+      <div class="footer-address">
+        <div class="addr-row">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>{{ p.address }}</span>
+        </div>
+        <div class="addr-row">
+          <i class="fas fa-building"></i>
+          <span>{{ p.companyAddress }}</span>
+        </div>
+        <div class="addr-row">
+          <i class="fas fa-envelope"></i>
+          <a [href]="'mailto:' + p.email">{{ p.email }}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Nav links -->
+    <div class="footer-col center">
+      <p class="footer-col-title mono">Connect</p>
+      <div class="social-links">
+        <a [href]="p.linkedin" target="_blank" class="social-btn linkedin" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a [href]="'https://github.com/' + p.github" target="_blank" class="social-btn github" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a [href]="p.instagram" target="_blank" class="social-btn instagram" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a [href]="'mailto:' + p.email" class="social-btn email" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; {{ getYear() }} {{ p.name }}. All rights reserved.</p>
+    </div>
+
+    <!-- Right: QR Code -->
+    <div class="footer-col right">
+      <p class="footer-col-title mono">Resume QR</p>
+      <div class="qr-wrapper glass embossed">
+        <img [src]="getQrUrl(p.resumeUrl)" alt="Resume QR Code" class="qr-img">
+      </div>
+      <a [href]="p.resumeUrl" download class="btn-glow download-btn">
+        <span><i class="fas fa-download"></i> Download Resume</span>
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,108 @@
+<section class="portfolio-section" id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact Me</h2>
+    <p class="section-sub">Let's build something remarkable together.</p>
+
+    <div class="contact-layout">
+      <!-- Session Info Card -->
+      <div class="session-card glass embossed" *ngIf="isSessionMode() && session() as s">
+        <div class="session-header">
+          <div class="session-avatar">
+            <span>{{ getInitials(s.name) }}</span>
+          </div>
+          <div class="session-info">
+            <span class="session-name">{{ s.name }}</span>
+            <span class="session-email mono">{{ s.email }}</span>
+          </div>
+          <button class="clear-btn" (click)="clearSession()" title="Change details">
+            <i class="fas fa-edit"></i>
+          </button>
+        </div>
+        <div class="session-details">
+          <div class="session-detail" *ngIf="s.phone">
+            <i class="fas fa-phone"></i>
+            <span class="mono">{{ s.phone }}</span>
+          </div>
+          <div class="session-detail" *ngIf="s.linkedin">
+            <i class="fab fa-linkedin"></i>
+            <a [href]="s.linkedin" target="_blank" class="mono linkedin-link">View Profile</a>
+          </div>
+        </div>
+        <p class="session-hint">Your details are saved. Send multiple messages without re-entering info!</p>
+      </div>
+
+      <!-- New Session Form -->
+      <div class="new-session glass embossed" *ngIf="!isSessionMode()">
+        <h3 class="form-title">Your Details</h3>
+        <p class="form-sub">Saved for this session (30 days)</p>
+
+        <div class="field-grid">
+          <div class="field-group">
+            <label class="field-label"><i class="fas fa-user"></i> Name *</label>
+            <input class="field-input glass" [(ngModel)]="form.name" placeholder="Your full name" type="text">
+          </div>
+          <div class="field-group">
+            <label class="field-label"><i class="fas fa-envelope"></i> Email *</label>
+            <input class="field-input glass" [(ngModel)]="form.email" placeholder="your@email.com" type="email">
+          </div>
+          <div class="field-group">
+            <label class="field-label"><i class="fas fa-phone"></i> Phone</label>
+            <input class="field-input glass" [(ngModel)]="form.phone" placeholder="+91 00000 00000" type="tel">
+          </div>
+          <div class="field-group">
+            <label class="field-label"><i class="fab fa-linkedin"></i> LinkedIn</label>
+            <input class="field-input glass" [(ngModel)]="form.linkedin" placeholder="linkedin.com/in/you" type="url">
+          </div>
+        </div>
+
+        <button class="btn-glow save-btn" (click)="saveSession()" [disabled]="!form.name || !form.email">
+          <span><i class="fas fa-lock"></i> Save & Continue</span>
+        </button>
+      </div>
+
+      <!-- Messages Thread -->
+      <div class="message-panel glass embossed" [class.active]="isSessionMode()">
+        <div class="messages-list" *ngIf="messages().length > 0">
+          <div *ngFor="let msg of messages()" class="message-bubble" [class]="msg.status">
+            <div class="msg-content">{{ msg.message }}</div>
+            <div class="msg-meta">
+              <span class="msg-time mono">{{ msg.timestamp | date:'hh:mm a' }}</span>
+              <span class="msg-status">
+                <i class="fas" [class.fa-clock]="msg.status === 'sending'" [class.fa-check-double]="msg.status === 'sent'" [class.fa-exclamation-circle]="msg.status === 'error'"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="empty-thread" *ngIf="messages().length === 0 && isSessionMode()">
+          <i class="fas fa-comments"></i>
+          <p>Start the conversation!</p>
+        </div>
+
+        <div class="locked-hint" *ngIf="!isSessionMode()">
+          <i class="fas fa-lock"></i>
+          <p>Fill your details above to start messaging</p>
+        </div>
+
+        <!-- Compose -->
+        <div class="compose-row" [class.disabled]="!isSessionMode()">
+          <textarea
+            class="compose-input glass"
+            [(ngModel)]="newMessage"
+            placeholder="Type your message..."
+            [disabled]="!isSessionMode() || isSending()"
+            rows="3"
+            (keydown.ctrl.enter)="sendMessage()">
+          </textarea>
+          <button class="send-btn btn-glow" (click)="sendMessage()" [disabled]="!isSessionMode() || !newMessage.trim() || isSending()">
+            <span>
+              <i class="fas" [class.fa-paper-plane]="!isSending()" [class.fa-spinner]="isSending()" [class.fa-spin]="isSending()"></i>
+              {{ isSending() ? 'Sending...' : 'Send' }}
+            </span>
+          </button>
+        </div>
+        <p class="compose-hint mono" *ngIf="isSessionMode()">Ctrl + Enter to send</p>
+      </div>
+    </div>
+  </div>
+</section>

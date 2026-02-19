@@ -1,0 +1,52 @@
+<header class="portfolio-header glass embossed" [class.dark]="themeService.isDark()">
+  <div class="header-inner">
+    <!-- Left: Role + Company -->
+    <div class="role-info" *ngIf="profile()">
+      <span class="role-badge">
+        <span class="live-dot"></span>
+        <span class="role-text">{{ profile()!.currentRole }}</span>
+        <span class="separator">@</span>
+        <span class="company">{{ profile()!.currentCompany }}</span>
+      </span>
+      <span class="tenure mono">{{ tenure() }}</span>
+    </div>
+
+    <!-- Center: Nav -->
+    <nav class="nav-links">
+      <button *ngFor="let s of sections" class="nav-btn" (click)="scrollTo(s.id)">
+        {{ s.label }}
+        <span class="nav-underline"></span>
+      </button>
+    </nav>
+
+    <!-- Right: Theme Switcher -->
+    <div class="theme-controls">
+      <!-- Dynamic / Static toggle -->
+      <div class="mode-toggle" [class.dynamic]="themeService.mode() === 'dynamic'" (click)="setMode(themeService.mode() === 'dynamic' ? 'dark' : 'dynamic')">
+        <div class="toggle-pill">
+          <span class="toggle-label left">Static</span>
+          <div class="toggle-thumb"></div>
+          <span class="toggle-label right">Dynamic</span>
+        </div>
+      </div>
+
+      <!-- Theme info pill -->
+      <button class="theme-pill glass" (click)="showThemePanel.set(!showThemePanel())">
+        <span>{{ themeService.getThemeLabel(themeService.currentTheme()) }}</span>
+        <i class="fas fa-chevron-down" [class.rotated]="showThemePanel()"></i>
+      </button>
+
+      <!-- Theme Panel -->
+      <div class="theme-panel glass embossed" *ngIf="showThemePanel()" (click)="$event.stopPropagation()">
+        <button *ngFor="let opt of themeOptions" class="theme-option" [class.active]="themeService.mode() === opt.mode" (click)="setMode(opt.mode)">
+          {{ opt.label }}
+        </button>
+        <!-- Light/Dark quick switch (visible when static) -->
+        <div class="light-dark-switch" *ngIf="themeService.mode() !== 'dynamic'">
+          <button class="ld-btn" [class.active]="themeService.currentTheme() === 'morning'" (click)="setMode('light')">☀️</button>
+          <button class="ld-btn" [class.active]="themeService.currentTheme() === 'night'" (click)="setMode('dark')">🌙</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

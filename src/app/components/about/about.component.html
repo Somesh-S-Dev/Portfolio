@@ -1,0 +1,58 @@
+<section class="portfolio-section" id="about" *ngIf="profile() as p">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left: Identity -->
+      <div class="identity-card glass embossed reveal">
+        <!-- Decorative orbit -->
+        <div class="orbit-ring">
+          <div class="orbit-dot"></div>
+        </div>
+
+        <!-- Avatar placeholder with initials -->
+        <div class="avatar-wrap">
+          <div class="avatar">
+            <span class="avatar-initials">{{ p.name.split(' ').map(n => n[0]).join('').slice(0,2) }}</span>
+          </div>
+          <div class="avatar-glow"></div>
+        </div>
+
+        <h1 class="hero-name">
+          <span class="typed-name">{{ typedName() }}</span><span class="cursor">|</span>
+        </h1>
+        <p class="tagline text-gradient">{{ p.tagline }}</p>
+        <p class="brief">{{ p.brief }}</p>
+
+        <!-- Contact links -->
+        <div class="contact-links">
+          <a [href]="'mailto:' + p.email" class="contact-chip glass">
+            <i class="fas fa-envelope"></i>
+            <span>{{ p.email }}</span>
+          </a>
+          <a [href]="p.linkedin" target="_blank" class="contact-chip glass linkedin">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+            <i class="fas fa-arrow-up-right-from-square ext-icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Skills -->
+      <div class="skills-panel reveal reveal-delay-2">
+        <h2 class="section-title">Skills</h2>
+        <div class="skill-groups">
+          <div *ngFor="let group of getSkillGroups(p); let i = index" class="skill-group glass embossed reveal" [class]="'reveal-delay-' + (i+3)">
+            <div class="group-header">
+              <span class="group-icon">{{ group.icon }}</span>
+              <span class="group-label mono">{{ group.label }}</span>
+            </div>
+            <div class="badges-wrap">
+              <span *ngFor="let skill of group.items" class="skill-badge">
+                {{ skill }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

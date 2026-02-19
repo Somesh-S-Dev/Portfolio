@@ -1,0 +1,38 @@
+<section class="portfolio-section" id="badges">
+  <div class="container">
+    <h2 class="section-title">Badges & Achievements</h2>
+    <p class="section-sub">Earned from top platforms and course paths. Hover to explore.</p>
+
+    <div class="badges-showcase">
+      <div *ngFor="let badge of badges(); let i = index"
+        class="badge-item reveal"
+        [class]="'reveal-delay-' + (i % 6)"
+        (mouseenter)="onBadgeHover(badge, $event)"
+        (mouseleave)="onBadgeLeave()"
+        (click)="openBadge(badge)"
+        [style.--anim-delay]="(i * 0.15) + 's'">
+
+        <div class="badge-glow"></div>
+        <div class="badge-frame glass embossed">
+          <img [src]="badge.image" [alt]="badge.title" class="badge-image" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="badge-fallback">
+            <i class="fas fa-medal"></i>
+          </div>
+        </div>
+        <p class="badge-label">{{ badge.title }}</p>
+      </div>
+    </div>
+
+    <!-- Hover Tooltip -->
+    <div class="badge-tooltip glass embossed"
+      *ngIf="hoveredBadge()"
+      [style.left.px]="tooltipPos().x"
+      [style.top.px]="tooltipPos().y">
+      <p class="tooltip-title">{{ hoveredBadge()!.title }}</p>
+      <p class="tooltip-issuer"><i class="fas fa-award"></i> {{ hoveredBadge()!.issuer }}</p>
+      <p class="tooltip-date mono">Earned: {{ hoveredBadge()!.earnedDate }}</p>
+      <p class="tooltip-desc">{{ hoveredBadge()!.description }}</p>
+      <p class="tooltip-cta" *ngIf="hoveredBadge()!.credlyUrl"><i class="fas fa-external-link-alt"></i> Click to verify on Credly</p>
+    </div>
+  </div>
+</section>

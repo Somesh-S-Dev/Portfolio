@@ -1,0 +1,18 @@
+[
+  {
+    "id": "edu1",
+    "institution": "Anna University",
+    "degree": "Bachelor of Engineering",
+    "stream": "Computer Science & Engineering",
+    "cgpa": "8.7 / 10",
+    "yearStart": 2021,
+    "yearEnd": 2026,
+    "location": "Chennai, India",
+    "image": "assets/images/education/anna-university.jpg",
+    "highlights": [
+      "Department Rank Holder",
+      "Published 2 research papers",
+      "Technical Lead - Coding Club"
+    ]
+  }
+]

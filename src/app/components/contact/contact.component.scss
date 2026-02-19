@@ -1,0 +1,310 @@
+.section-sub {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Session Card */
+.session-card {
+  padding: 28px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.session-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.session-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.session-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.session-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.session-email {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.clear-btn {
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--accent-1);
+    border-color: var(--accent-1);
+  }
+}
+
+.session-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.session-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+
+  i { color: var(--accent-1); width: 16px; text-align: center; }
+}
+
+.linkedin-link {
+  color: var(--accent-1);
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+.session-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
+  padding: 10px 12px;
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+}
+
+/* Form */
+.new-session {
+  padding: 28px;
+  border-radius: var(--radius-md);
+}
+
+.form-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.form-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+
+  @media (max-width: 600px) { grid-template-columns: 1fr; }
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  i { color: var(--accent-1); font-size: 0.7rem; }
+}
+
+.field-input {
+  padding: 11px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s;
+  box-shadow: inset 1px 1px 0 var(--emboss-dark);
+
+  &::placeholder { color: var(--text-muted); }
+
+  &:focus {
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 3px var(--accent-glow), inset 1px 1px 0 var(--emboss-dark);
+  }
+}
+
+.save-btn { margin-top: 4px; }
+
+/* Message Panel */
+.message-panel {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 400px;
+
+  &.active { border-color: var(--glass-border-strong); }
+}
+
+.messages-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.message-bubble {
+  align-self: flex-end;
+  max-width: 80%;
+  padding: 14px 18px;
+  border-radius: 18px 18px 4px 18px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  animation: fadeSlideUp 0.3s ease;
+
+  &.sent {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color: #fff;
+    box-shadow: 0 4px 20px var(--accent-glow);
+  }
+
+  &.sending {
+    background: var(--surface-hover);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    opacity: 0.8;
+  }
+
+  &.error {
+    background: var(--glass-error);
+    border: 1px solid var(--border-error);
+    color: #ff9f9f;
+  }
+}
+
+.msg-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 6px;
+  opacity: 0.75;
+}
+
+.msg-time {
+  font-size: 0.68rem;
+}
+
+.msg-status {
+  font-size: 0.75rem;
+  .fa-check-double { color: #6fff9e; }
+  .fa-exclamation-circle { color: #ff6f6f; }
+}
+
+.empty-thread, .locked-hint {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-muted);
+
+  i { font-size: 2.5rem; opacity: 0.4; }
+  p { font-size: 0.88rem; }
+}
+
+/* Compose */
+.compose-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+
+  &.disabled { opacity: 0.4; pointer-events: none; }
+}
+
+.compose-input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  resize: none;
+  outline: none;
+  transition: all 0.2s;
+  box-shadow: inset 1px 1px 0 var(--emboss-dark);
+
+  &::placeholder { color: var(--text-muted); }
+  &:focus {
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 3px var(--accent-glow), inset 1px 1px 0 var(--emboss-dark);
+  }
+  &:disabled { cursor: not-allowed; opacity: 0.5; }
+}
+
+.send-btn {
+  padding: 14px 22px;
+  white-space: nowrap;
+  &:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+}
+
+.compose-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: -8px;
+}

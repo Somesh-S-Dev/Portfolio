@@ -1,0 +1,209 @@
+.weather-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%, var(--accent-glow) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(var(--accent-2), 0.1) 0%, transparent 60%);
+  opacity: 0.4;
+  transition: all 2s ease;
+}
+
+/* ── SUNNY: Light rays ── */
+.sun-core {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,220,80,0.9) 0%, rgba(255,180,0,0.4) 40%, transparent 70%);
+  top: -80px;
+  right: 10%;
+  animation: sunPulse 4s ease-in-out infinite;
+  filter: blur(2px);
+}
+
+.sun-haze {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,200,50,0.12) 0%, transparent 70%);
+  top: -200px;
+  right: calc(10% - 200px);
+  animation: sunPulse 6s ease-in-out infinite reverse;
+}
+
+.light-ray {
+  position: absolute;
+  width: 2px;
+  height: 120vh;
+  top: 0;
+  right: calc(10% + 50px);
+  transform-origin: top center;
+  transform: rotate(calc(var(--i) * 15deg)) translateX(-50%);
+  background: linear-gradient(180deg, rgba(255,220,80,0.3) 0%, transparent 70%);
+  animation: rayShimmer calc(3s + var(--i) * 0.5s) ease-in-out infinite alternate;
+  filter: blur(1px);
+}
+
+@keyframes sunPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+@keyframes rayShimmer {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.6; }
+}
+
+/* ── CLOUDS ── */
+.cloud {
+  position: absolute;
+  top: calc(var(--top));
+  left: -300px;
+  width: calc(280px * var(--size));
+  height: calc(100px * var(--size));
+  background: rgba(200,220,255,0.12);
+  border-radius: 999px;
+  animation: cloudDrift var(--speed) linear infinite;
+  animation-delay: calc(var(--i) * -4s);
+  filter: blur(8px);
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+  }
+  &::before {
+    width: 60%;
+    height: 150%;
+    top: -60%;
+    left: 15%;
+  }
+  &::after {
+    width: 45%;
+    height: 130%;
+    top: -50%;
+    left: 45%;
+  }
+}
+
+@keyframes cloudDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(100vw + 400px)); }
+}
+
+/* ── RAIN ── */
+.rain-drop {
+  position: absolute;
+  left: calc(var(--x));
+  top: -20px;
+  width: 1.5px;
+  height: 20px;
+  background: linear-gradient(180deg, transparent, rgba(120,180,255,0.7), transparent);
+  border-radius: 1px;
+  animation: rainFall var(--speed) linear infinite;
+  animation-delay: calc(var(--delay));
+  transform: rotate(15deg);
+  filter: blur(0.5px);
+}
+
+.rain-mist {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(0deg, rgba(80,120,200,0.08) 0%, transparent 100%);
+}
+
+@keyframes rainFall {
+  from { transform: rotate(15deg) translateY(-20px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  to { transform: rotate(15deg) translateY(110vh); opacity: 0; }
+}
+
+/* ── BREEZE ── */
+.air-stream {
+  position: absolute;
+  top: calc(var(--top));
+  left: -10%;
+  width: 120%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(100,220,180,0.25), transparent);
+  border-radius: 2px;
+  animation: breezeFlow var(--speed) ease-in-out infinite;
+  animation-delay: calc(var(--i) * -1.5s);
+  filter: blur(1px);
+}
+
+.leaf {
+  position: absolute;
+  width: 28px;
+  height: 16px;
+  background: linear-gradient(135deg, #6bff9e, #00c87a);
+  border-radius: 0 100% 0 100%;
+  animation: leafFloat var(--leaf-dur) ease-in-out infinite;
+  top: 30%;
+  left: -40px;
+  filter: drop-shadow(0 2px 6px rgba(0,200,100,0.3));
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.3));
+    border-radius: inherit;
+  }
+}
+
+.leaf-2 {
+  top: 55%;
+  width: 20px;
+  height: 11px;
+  animation-delay: -6s;
+}
+
+@keyframes breezeFlow {
+  0% { transform: translateX(-10%) scaleX(0.8); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(10%) scaleX(1.2); opacity: 0; }
+}
+
+@keyframes leafFloat {
+  0% { left: -5%; top: 20%; transform: rotate(-20deg); opacity: 0; }
+  5% { opacity: 1; }
+  30% { top: 40%; transform: rotate(15deg); }
+  60% { top: 25%; transform: rotate(-10deg); }
+  85% { opacity: 1; }
+  100% { left: 110%; top: 60%; transform: rotate(25deg); opacity: 0; }
+}
+
+/* ── STARS ── */
+.stars-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.star {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  animation: starTwinkle calc(2s + var(--delay)) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}

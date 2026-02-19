@@ -1,0 +1,52 @@
+<section class="portfolio-section" id="certifications">
+  <div class="container">
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="certs-grid">
+      <div *ngFor="let cert of certs(); let i = index"
+        class="cert-card glass embossed reveal"
+        [class]="'reveal-delay-' + (i % 5)"
+        (click)="openCert(cert)">
+
+        <!-- Certificate as blurred background -->
+        <div class="cert-bg" [style.background-image]="'url(' + cert.bgImage + ')'"></div>
+        <div class="cert-veil"></div>
+
+        <!-- Content overlay -->
+        <div class="cert-content">
+          <div class="cert-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3 class="cert-title">{{ cert.title }}</h3>
+          <p class="cert-provider">
+            <i class="fas fa-building"></i> {{ cert.provider }}
+          </p>
+          <p class="cert-date mono">{{ cert.issueDate }}</p>
+          <div class="cert-actions">
+            <span class="view-cert-hint"><i class="fas fa-eye"></i> Click to view</span>
+            <a *ngIf="cert.credentialUrl" [href]="cert.credentialUrl" target="_blank" class="verify-link" (click)="$event.stopPropagation()">
+              <i class="fas fa-external-link-alt"></i> Verify
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup-overlay" *ngIf="selectedCert()" [class.closing]="isClosing()" (click)="onOverlayClick($event)" (keydown.escape)="closePopup()">
+    <div class="cert-popup popup-content" [class.closing]="isClosing()">
+      <button class="popup-close" (click)="closePopup()"><i class="fas fa-times"></i></button>
+      <img [src]="selectedCert()!.image" [alt]="selectedCert()!.title" class="cert-full-img">
+      <div class="cert-popup-footer glass">
+        <div>
+          <h4>{{ selectedCert()!.title }}</h4>
+          <p class="mono">{{ selectedCert()!.provider }}</p>
+        </div>
+        <a *ngIf="selectedCert()!.credentialUrl" [href]="selectedCert()!.credentialUrl" target="_blank" class="btn-glow sm-btn">
+          <span><i class="fas fa-external-link-alt"></i> Verify Credential</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

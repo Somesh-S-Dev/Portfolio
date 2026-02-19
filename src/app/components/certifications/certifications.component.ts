@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../services/data.service';
 import { Certification } from '../../models/portfolio.models';
@@ -31,6 +31,14 @@ export class CertificationsComponent implements OnInit {
       this.isClosing.set(false);
     }, 250);
   }
+
+  @HostListener('document:portfolio:escape')
+  onEscape() {
+    if (this.selectedCert()) {
+      this.closePopup();
+    }
+  }
+
 
   onOverlayClick(event: MouseEvent) {
     if ((event.target as HTMLElement).classList.contains('popup-overlay')) {

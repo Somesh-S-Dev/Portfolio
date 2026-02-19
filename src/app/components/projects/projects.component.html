@@ -19,67 +19,88 @@
 
     <!-- Grid -->
     <div class="projects-grid" *ngIf="!loading() && !error()">
-      <div *ngFor="let repo of repos(); let i = index"
-        class="project-card glass embossed reveal"
-        [class]="'reveal-delay-' + (i % 6)"
-        (click)="openRepo(repo)">
+      <div *ngFor="let repo of repos(); let i = index" class="project-card glass embossed reveal"
+        [class]="'reveal-delay-' + (i % 6)" (click)="openRepo(repo)">
 
-        <!-- Top -->
+        <!-- Top Row -->
         <div class="proj-top">
           <div class="proj-icon">
             <i class="fas fa-code-branch"></i>
           </div>
-          <div class="proj-stars">
-            <i class="fas fa-star"></i>
-            <span>{{ repo.stargazers_count }}</span>
+          <div class="proj-stats">
+            <div class="proj-stat">
+              <i class="fas fa-star"></i>
+              <span>{{ repo.stargazers_count }}</span>
+            </div>
           </div>
         </div>
 
-        <!-- Name & desc -->
+        <!-- Name & Desc -->
         <h3 class="proj-name">{{ repo.name }}</h3>
         <p class="proj-desc">{{ repo.description || 'No description available.' }}</p>
 
-        <!-- Meta -->
-        <div class="proj-meta">
-          <div class="lang-dot" *ngIf="repo.language">
+        <!-- Footer -->
+        <div class="proj-footer">
+          <div class="proj-lang" *ngIf="repo.language">
             <span class="lang-circle" [style.background]="getLangColor(repo.language)"></span>
             <span class="mono">{{ repo.language }}</span>
           </div>
-          <span class="proj-date mono">{{ formatDate(repo.updated_at) }}</span>
-        </div>
-
-        <!-- License -->
-        <div class="proj-license" *ngIf="repo.license">
-          <i class="fas fa-balance-scale"></i>
-          <span class="mono">{{ repo.license.name }}</span>
-        </div>
-
-        <div class="proj-cta">
-          <span>View README</span>
-          <i class="fas fa-arrow-right"></i>
+          <div class="proj-cta">
+            <span>Details</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- README Popup -->
-  <div class="popup-overlay" *ngIf="selectedRepo()" [class.closing]="isClosing()" (click)="onOverlayClick($event)" (keydown.escape)="closePopup()">
-    <div class="readme-popup glass embossed popup-content" [class.closing]="isClosing()" tabindex="0">
-      <button class="popup-close" (click)="closePopup()"><i class="fas fa-times"></i></button>
-      <div class="readme-header">
-        <div class="readme-repo-info">
-          <i class="fas fa-book-open"></i>
+  <!-- Project Popup Overlay -->
+  <div class="popup-overlay" *ngIf="selectedRepo()" [class.closing]="isClosing()" (click)="onOverlayClick($event)">
+    <div class="project-popup glass embossed popup-content" [class.closing]="isClosing()">
+
+      <div class="popup-header">
+        <div class="repo-info">
+          <i class="fas fa-code-branch"></i>
           <h3>{{ selectedRepo()?.name }}</h3>
         </div>
-        <a [href]="selectedRepo()?.html_url" target="_blank" class="btn-glow sm-btn">
-          <span><i class="fab fa-github"></i> Open on GitHub</span>
-        </a>
+        <button class="popup-close-btn" (click)="closePopup()" title="Close (Esc)">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
-      <div class="readme-loading" *ngIf="readmeLoading()">
-        <div class="loading-spinner"></div>
-        <span>Loading README...</span>
+
+      <div class="popup-body">
+        <p class="full-desc">{{ selectedRepo()?.description || 'No description available for this repository.' }}</p>
+
+        <div class="popup-meta-grid">
+          <div class="meta-item">
+            <span class="meta-label mono">Updated</span>
+            <span class="meta-val">{{ formatDate(selectedRepo()!.updated_at) }}</span>
+          </div>
+          <div class="meta-item" *ngIf="selectedRepo()?.language">
+            <span class="meta-label mono">Language</span>
+            <div class="lang-tag">
+              <span class="lang-circle" [style.background]="getLangColor(selectedRepo()!.language)"></span>
+              <span>{{ selectedRepo()?.language }}</span>
+            </div>
+          </div>
+          <div class="meta-item" *ngIf="selectedRepo()?.license">
+            <span class="meta-label mono">License</span>
+            <span class="meta-val">{{ selectedRepo()?.license?.name }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label mono">Stars</span>
+            <span class="meta-val"><i class="fas fa-star"></i> {{ selectedRepo()?.stargazers_count }}</span>
+          </div>
+        </div>
+
+        <div class="popup-actions">
+          <a [href]="selectedRepo()?.html_url" target="_blank" class="repo-link-btn">
+            <i class="fab fa-github"></i>
+            <span>Open in GitHub</span>
+            <i class="fas fa-external-link-alt sm-icon"></i>
+          </a>
+        </div>
       </div>
-      <div class="readme-content" *ngIf="!readmeLoading()" [innerHTML]="readmeHtml()"></div>
     </div>
   </div>
 </section>

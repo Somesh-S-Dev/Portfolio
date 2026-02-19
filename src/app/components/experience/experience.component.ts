@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../services/data.service';
 import { Experience } from '../../models/portfolio.models';
@@ -47,6 +47,14 @@ export class ExperienceComponent implements OnInit {
   hideProof() {
     this.proofExpId.set(null);
   }
+
+  @HostListener('document:portfolio:escape')
+  onEscape() {
+    if (this.proofExpId()) {
+      this.hideProof();
+    }
+  }
+
 
   getProofExp(): Experience | undefined {
     return this.experiences().find(e => e.id === this.proofExpId());

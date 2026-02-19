@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GitHubService } from '../../services/github.service';
 import { DataService } from '../../services/data.service';
@@ -21,8 +21,6 @@ export class ProjectsComponent implements OnInit {
   loading = signal(true);
   error = signal(false);
   selectedRepo = signal<GitHubRepo | null>(null);
-  readmeHtml = signal('');
-  readmeLoading = signal(false);
   isClosing = signal(false);
 
   readonly LANG_COLORS: Record<string, string> = {
@@ -56,20 +54,7 @@ export class ProjectsComponent implements OnInit {
 
   openRepo(repo: GitHubRepo) {
     this.selectedRepo.set(repo);
-    this.readmeHtml.set('');
-    this.readmeLoading.set(true);
-    const username = this.profile()?.github || '';
-    this.githubService.getReadme(username, repo.name).subscribe({
-      next: async (md) => {
-        const html = await marked(md);
-        this.readmeHtml.set(html);
-        this.readmeLoading.set(false);
-      },
-      error: () => {
-        this.readmeHtml.set('<p>No README available for this project.</p>');
-        this.readmeLoading.set(false);
-      }
-    });
+    this.isClosing.set(false);
   }
 
   closePopup() {
@@ -80,10 +65,22 @@ export class ProjectsComponent implements OnInit {
     }, 250);
   }
 
+  @HostListener('document:portfolio:escape')
+  onEscape() {
+    if (this.selectedRepo()) {
+      this.closePopup();
+    }
+  }
+
   onOverlayClick(event: MouseEvent) {
     if ((event.target as HTMLElement).classList.contains('popup-overlay')) {
       this.closePopup();
     }
+  }
+
+  goToGithub() {
+    const p = this.profile();
+    if (p) window.open(`https://github.com/${p.github}`, '_blank');
   }
 
   formatDate(dateStr: string): string {
@@ -93,10 +90,5 @@ export class ProjectsComponent implements OnInit {
   getLangColor(lang: string | null): string {
     if (!lang) return 'var(--text-muted)';
     return this.LANG_COLORS[lang] || 'var(--accent-1)';
-  }
-
-  goToGithub() {
-    const p = this.profile();
-    if (p) window.open(`https://github.com/${p.github}`, '_blank');
   }
 }

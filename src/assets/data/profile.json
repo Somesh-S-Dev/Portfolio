@@ -1,0 +1,24 @@
+{
+  "name": "Kamatchi Somesh S",
+  "tagline": "GenAI Developer | Software Engineer | Tech Enthusiast",
+  "brief": "Passionate software engineer with expertise in GenAI development, building scalable applications, and driving innovation. Skilled in Python, TypeScript, and modern frameworks. Committed to continuous learning and delivering impactful solutions.",
+  "email": "kamatchisomesh@gmail.com",
+  "linkedin": "https://linkedin.com/in/_.somesh._.s._",
+  "github": "Somesh-S-Dev",
+  "instagram": "https://instagram.com/yourhandle",
+  "currentRole": "GenAI Developer",
+  "currentCompany": "WinsSoft Innovations Pvt Ltd",
+  "dateOfJoining": "2025-11-01",
+  "address": "Gobi, Tamil Nadu, India",
+  "companyAddress": "6A/1, J J Nagar, Near Astalakshmi Temple, Karattur, Gobichettipalayam, Erode (Dt) Tamilnadu.",
+  "resumeUrl": "assets/resume.pdf",
+  "skills": {
+    "languages": ["Python", "TypeScript", "JavaScript", "C#", "SQL"],
+    "frameworks": ["Tensorflow", "Keras", "PyTorch", "FastAPI", "Angular", "React", "Node.js", "TailwindCSS"],
+    "tools": ["Docker", "Kubernetes", "AWS", "Git", "PostgreSQL"],
+    "other": ["System Design", "REST APIs", "GraphQL", "CI/CD", "Agile", "Microservices", "Scrum"]
+  },
+  "emailjsServiceId": "service_4o38xew",
+  "emailjsTemplateId": "template_nrr36z9",
+  "emailjsPublicKey": "__ug2IOb_YfwttXsP"
+}

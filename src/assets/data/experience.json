@@ -1,0 +1,53 @@
+[
+  {
+    "id": "exp2",
+    "company": "Sayvai.io",
+    "logo": "assets/images/experience/awesome-corp.png",
+    "role": "Machine Learning Intern",
+    "type": "Internship",
+    "dateFrom": "2024-06-01",
+    "dateTo": "2024-11-14",
+    "location": "Coimbatore, India (Remote)",
+    "description": "Building scalable microservices and real-time data pipelines powering 2M+ daily active users. Architecting cloud-native solutions on AWS with Kubernetes orchestration.",
+    "tasks": [
+      "Contributed to operational GenAI projects involving speech-to-text models, forecasting, and multilingual AI integrations.",
+      "Researched and developed AI pipelines for real-world client use cases. Hands-on work with Whisper, Sarvam AI, Transformers,and knowledge graphs.",
+      "Explored speech processing in Haitian Creole and voice bot integration for Tamil."
+    ],
+    "projects": [
+      "Wealthified – AI Meet Assist",
+      "Amazon Product Sales Forecasting",
+      "AI Project Manager (Notion Integration)",
+      "Haitian Creole Research",
+      "Multilingual Voice Bot Exploration"
+    ],
+    "techStack": ["Python", "FastAPI", "Jupyter Notebook", "API Integration", "API Testing", "Research", "SQL"],
+    "certificateImage": "assets/images/experience/awesome-corp-cert.jpg"
+  },
+  {
+    "id": "exp1",
+    "company": "WinsSoft Innovations",
+    "logo": "assets/images/experience/techstartup.png",
+    "role": "Artificial Intelligence Intern",
+    "type": "Internship",
+    "dateFrom": "2025-12-01",
+    "dateTo": null,
+    "location": "On-Site",
+    "description": "Developing AI Analytical Engine For a ERP Dashboard with Complex DB Structure and ERP business Logics",
+    "tasks": [
+      "Developing a NLP-SQL with metadata Driven LLM Generation module",
+      "Query Normalizing with 2 level Gaurdrail for restriction and out of domain queries",
+      "Regex Based SQL Validation and Surgical Rewritter For schema check and rewriting SQL on schematical errors",
+      "T-SQL Data querying From SQL Server and Data restructuring for Insight generation via LLM",
+      "Usage logger and monitoring for computing the usage of LLM with respect to the company and user",
+      "Developing a revenue generator for the free ERP Dashboard to Paid AI Analytical Dashboard",
+      "Developed a SessionID Generator with a fixed pattern which serves 2 goals - Authenticated Token, Chat Session Identification",
+      "Developed a API Gateway in exisitng server only for chatbot with IP Filtering, User Blocking on frequent request, Other Company entity restriction"
+    ],
+    "projects": [
+      "AI Analytical Chatbot"
+    ],
+    "techStack": ["Angular", "C#", "ASP.NET", "Python", "FastAPI", "Dockers", "Kubernetes", "GCP", "AWS"],
+    "certificateImage": "assets/images/experience/techstartup-cert.jpg"
+  }
+]

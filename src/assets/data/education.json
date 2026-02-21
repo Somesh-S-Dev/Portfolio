@@ -1,0 +1,18 @@
+[
+  {
+    "id": "edu1",
+    "institution": "Coimbatore Institute of Technology",
+    "degree": "Master of Science",
+    "stream": "Artificial Intelligence and Machine Learning",
+    "cgpa": "7.9 / 10",
+    "yearStart": 2021,
+    "yearEnd": 2026,
+    "location": "Coimbatore, India",
+    "image": "assets/images/education/cit.png",
+    "highlights": [
+      "Participated in Hackathons and coding competitions",
+      "Paper Presentation and Ideathon at NGP 2024",
+      "Team Lead for MAD-K Organization"
+    ]
+  }
+]

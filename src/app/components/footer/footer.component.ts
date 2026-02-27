@@ -24,7 +24,6 @@ export class FooterComponent implements OnInit {
 
   // QR code URL using Google Charts API (no key required)
   getQrUrl(resumeUrl: string): string {
-    const fullUrl = window.location.origin + '/' + resumeUrl;
-    return `https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=${encodeURIComponent(fullUrl)}&chco=7c6fff&chld=L|2`;
-  }
+    const driveUrl = "https://drive.google.com/file/d/1ndnAO5ze_NrYDZ1uzB-PXVm25O_8TOOD/preview";
+    return `https://quickchart.io/qr?text=${encodeURIComponent(driveUrl)}&chco=7c6fff&chld=L|2`;    }
 }

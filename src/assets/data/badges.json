@@ -1,38 +1,38 @@
 [
   {
-    "id": "badge4",
-    "title": "AWS Cloud Practitioner",
-    "issuer": "Amazon Web Services",
-    "earnedDate": "2022-11",
-    "image": "assets/images/badges/aws-cloud-practitioner.png",
-    "credlyUrl": "https://www.credly.com/badges/your-badge-id",
-    "description": "Validates cloud fluency and foundational AWS knowledge across all AWS services."
+    "id": "badge1",
+    "title": "Generative AI Essentials",
+    "issuer": "IBM Skillsbuild",
+    "earnedDate": "2026-02",
+    "image": "assets/images/badges/GenAI.png",
+    "credlyUrl": "https://www.credly.com/badges/df59b928-85ed-4d31-929f-4d4ca9c46aa6/public_url",
+    "description": "This credential earner has an understanding of the fundamentals of data classification using IBM tools and can demonstrate how large language models can be applied to practical tasks, such as generating meeting summaries and classifying customer reviews."
   },
   {
     "id": "badge2",
-    "title": "Google IT Support",
-    "issuer": "Google / Coursera",
-    "earnedDate": "2022-08",
-    "image": "assets/images/badges/google-it-support.png",
-    "credlyUrl": "https://www.credly.com/badges/your-badge-id",
-    "description": "Professional certificate validating IT support fundamentals and technical troubleshooting skills."
+    "title": "Agentic AI Fundamentals",
+    "issuer": "Intel",
+    "earnedDate": "2025-09",
+    "image": "assets/images/badges/AgentAI.png",
+    "credlyUrl": "https://www.credly.com/badges/c18bfbcf-5dce-46cd-8042-1d667777e89f/public_url",
+    "description": "Earners of this badge have demonstrated knowledge, understanding, and proficiency of Intel's value proposition for agents and agentic AI. The skills acquired have prepared them to drive business value through practical tools and frameworks for efficient agent development and deployment."
   },
   {
     "id": "badge3",
-    "title": "GitHubss Actions",
-    "issuer": "GitHub",
-    "earnedDate": "2023-03",
-    "image": "assets/images/badges/github-actions.png",
-    "credlyUrl": "https://www.credly.com/badges/your-badge-id",
-    "description": "Demonstrates proficiency in automating CI/CD workflows using GitHub Actions."
+    "title": "Cyber Threat Management",
+    "issuer": "CISCO",
+    "earnedDate": "2025-08",
+    "image": "assets/images/badges/CTI.png",
+    "credlyUrl": "https://www.credly.com/badges/f43d61af-6abd-4d52-acb4-efef9f124354/public_url",
+    "description": "Cisco verifies the earner of this badge successfully completed the Cyber Threat Management course. The holder of this student-level credential is familiar with cybersecurity policies and governance to ensure an organization complies with ethics standards and legal and regulatory frameworks."
   },
   {
-    "id": "badge1",
-    "title": "Docker Essentials",
-    "issuer": "IBM / Cognitive Class",
-    "earnedDate": "2023-01",
-    "image": "assets/images/badges/docker-essentials.png",
-    "credlyUrl": "https://www.credly.com/badges/your-badge-id",
+    "id": "badge4",
+    "title": "Cybersecurity Fundamentals",
+    "issuer": "IBM Skillsbuild",
+    "earnedDate": "2025-08",
+    "image": "assets/images/badges/Cyber.png",
+    "credlyUrl": "https://www.credly.com/badges/3f0f457f-7e88-432d-8cdc-0bdfd50d9427/public_url",
     "description": "Foundational knowledge of Docker containers, images, and containerized deployment strategies."
   }
 ]

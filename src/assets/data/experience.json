@@ -2,7 +2,7 @@
   {
     "id": "exp2",
     "company": "Sayvai.io",
-    "logo": "assets/images/experience/sayvai.png",
+    "logo": "assets/images/experience/Sayvai.png",
     "role": "Machine Learning Intern",
     "type": "Internship",
     "dateFrom": "2024-06-01",
@@ -22,7 +22,7 @@
       "Multilingual Voice Bot Exploration"
     ],
     "techStack": ["Python", "FastAPI", "Jupyter Notebook", "API Integration", "API Testing", "Research", "SQL"],
-    "certificateImage": "assets/images/experience/awesome-corp-cert.jpg"
+    "certificateImage": "assets/images/experience/Sayvai.png"
   },
   {
     "id": "exp1",

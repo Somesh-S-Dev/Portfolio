@@ -1,12 +1,12 @@
 [
   {
     "id": "cert1",
-    "title": "Google Professional Cloud Developer",
-    "provider": "Google Cloud",
-    "issueDate": "2023-12",
-    "credentialId": "GCP-PCD-XXXX",
-    "credentialUrl": "https://www.credential.net/your-cert",
-    "image": "assets/images/certifications/gcp-pcd.jpg",
-    "bgImage": "assets/images/certifications/gcp-pcd.jpg"
+    "title": "Claude Code In Action",
+    "provider": "Anthropic",
+    "issueDate": "2026-03-30",
+    "credentialId": "msnu8emc9vjv",
+    "credentialUrl": "https://verify.skilljar.com/c/msnu8emc9vjv",
+    "image": "assets/images/certifications/Claude_Code_Action.png",
+    "bgImage": "assets/images/certifications/bg_image/anthropic.png"
   }
 ]

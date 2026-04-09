@@ -21,18 +21,26 @@
       "Haitian Creole Research",
       "Multilingual Voice Bot Exploration"
     ],
-    "techStack": ["Python", "FastAPI", "Jupyter Notebook", "API Integration", "API Testing", "Research", "SQL"],
-    "certificateImage": "assets/images/experience/Sayvai.png"
+    "techStack": [
+      "Python",
+      "FastAPI",
+      "Jupyter Notebook",
+      "API Integration",
+      "API Testing",
+      "Research",
+      "SQL"
+    ],
+    "certificateImage": "assets/images/experience/sayvai_cert.png"
   },
   {
     "id": "exp1",
     "company": "WinsSoft Innovations",
-    "logo": "assets/images/experience/techstartup.png",
+    "logo": "assets/images/experience/winssoft.png",
     "role": "Artificial Intelligence Intern",
     "type": "Internship",
     "dateFrom": "2025-12-01",
     "dateTo": null,
-    "location": "On-Site",
+    "location": "Gobi, India (On-Site)",
     "description": "Developing AI Analytical Engine For a ERP Dashboard with Complex DB Structure and ERP business Logics",
     "tasks": [
       "Developing a NLP-SQL with metadata Driven LLM Generation module",
@@ -47,7 +55,17 @@
     "projects": [
       "AI Analytical Chatbot"
     ],
-    "techStack": ["Angular", "C#", "ASP.NET", "Python", "FastAPI", "Dockers", "Kubernetes", "GCP", "AWS"],
+    "techStack": [
+      "Angular",
+      "C#",
+      "ASP.NET",
+      "Python",
+      "FastAPI",
+      "Dockers",
+      "Kubernetes",
+      "GCP",
+      "AWS"
+    ],
     "certificateImage": "assets/images/experience/techstartup-cert.jpg"
   }
 ]

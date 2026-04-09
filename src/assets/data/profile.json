@@ -6,7 +6,7 @@
   "linkedin": "https://linkedin.com/in/kamatchi-somesh",
   "github": "Somesh-S-Dev",
   "instagram": "https://instagram.com/_.somesh._.s._",
-  "currentRole": "GenAI Developer",
+  "currentRole": "AI Intern",
   "currentCompany": "WinsSoft Innovations Pvt Ltd",
   "dateOfJoining": "2025-11-01",
   "address": "Gobi, Tamil Nadu, India",
@@ -16,7 +16,7 @@
     "languages": ["Python", "TypeScript", "JavaScript", "C#", "SQL"],
     "frameworks": ["Tensorflow", "Keras", "PyTorch", "FastAPI", "Angular", "React", "Node.js", "TailwindCSS"],
     "tools": ["Docker", "Kubernetes", "AWS", "Git", "PostgreSQL"],
-    "other": ["System Design", "REST APIs", "GraphQL", "CI/CD", "Agile", "Microservices", "Scrum"]
+    "other": ["System Design", "REST APIs", "ML pipelines", "GenAI applications", "CI/CD", "Agile", "Microservices"]
   },
   "emailjsServiceId": "service_4o38xew",
   "emailjsTemplateId": "template_nrr36z9",

@@ -14,7 +14,7 @@ export class ExperienceComponent implements OnInit {
   private dataService = inject(DataService);
   experiences = signal<Experience[]>([]);
   proofExpId = signal<string | null>(null);
-  proofPosition = signal({ x: 0, y: 0 });
+  isClosing = signal(false);
 
   ngOnInit() {
     this.dataService.getExperience().subscribe(e => this.experiences.set(e));
@@ -38,23 +38,31 @@ export class ExperienceComponent implements OnInit {
     return s.trim() || '< 1m';
   }
 
-  showProof(exp: Experience, event: MouseEvent) {
-    const rect = (event.target as HTMLElement).getBoundingClientRect();
-    this.proofPosition.set({ x: rect.left, y: rect.bottom + 10 });
+  openProof(exp: Experience) {
     this.proofExpId.set(exp.id);
+    this.isClosing.set(false);
   }
 
-  hideProof() {
-    this.proofExpId.set(null);
+  closeProof() {
+    this.isClosing.set(true);
+    setTimeout(() => {
+      this.proofExpId.set(null);
+      this.isClosing.set(false);
+    }, 250);
+  }
+
+  onOverlayClick(event: MouseEvent) {
+    if ((event.target as HTMLElement).classList.contains('popup-overlay')) {
+      this.closeProof();
+    }
   }
 
   @HostListener('document:portfolio:escape')
   onEscape() {
     if (this.proofExpId()) {
-      this.hideProof();
+      this.closeProof();
     }
   }
-
 
   getProofExp(): Experience | undefined {
     return this.experiences().find(e => e.id === this.proofExpId());

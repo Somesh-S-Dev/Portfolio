@@ -8,5 +8,15 @@
     "credentialUrl": "https://verify.skilljar.com/c/msnu8emc9vjv",
     "image": "assets/images/certifications/Claude_Code_Action.png",
     "bgImage": "assets/images/certifications/bg_image/anthropic.png"
+  },
+  {
+    "id": "cert2",
+    "title": "Model Context Protocol:Advanced Topics",
+    "provider": "Anthropic",
+    "issueDate": "2026-03-27",
+    "credentialId": "mjs5dgo6afx9",
+    "credentialUrl": "https://verify.skilljar.com/c/mjs5dgo6afx9",
+    "image": "assets/images/certifications/MCP  .png",
+    "bgImage": "assets/images/certifications/bg_image/anthropic.png"
   }
 ]

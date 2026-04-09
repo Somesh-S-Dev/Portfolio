@@ -78,17 +78,26 @@
           </div>
 
           <!-- Proof button -->
-          <div class="proof-wrap">
-            <div class="proof-btn"
-              (mouseenter)="showProof(exp, $event)"
-              (mouseleave)="hideProof()">
+          <div class="proof-wrap" *ngIf="exp.certificateImage">
+            <button class="proof-btn" (click)="openProof(exp)">
               <i class="fas fa-certificate"></i>
               <span>Proof</span>
-              <div class="proof-tooltip glass embossed" *ngIf="proofExpId() === exp.id" [style.top.px]="proofPosition().y" [style.left.px]="proofPosition().x">
-                <img [src]="exp.certificateImage" [alt]="exp.company + ' certificate'" class="cert-preview-img">
-              </div>
-            </div>
+            </button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proof Popup Overlay -->
+  <div class="popup-overlay" *ngIf="proofExpId()" [class.closing]="isClosing()" (click)="onOverlayClick($event)">
+    <div class="proof-popup popup-content" [class.closing]="isClosing()">
+      <button class="popup-close" (click)="closeProof()"><i class="fas fa-times"></i></button>
+      <img [src]="getProofExp()?.certificateImage" [alt]="getProofExp()?.company + ' certificate'" class="proof-full-img">
+      <div class="proof-popup-footer glass">
+        <div>
+          <h4>{{ getProofExp()?.company }}</h4>
+          <p class="mono">{{ getProofExp()?.role }}</p>
         </div>
       </div>
     </div>

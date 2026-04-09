@@ -27,6 +27,16 @@ export class WeatherBgComponent implements OnInit {
     top: 5 + i * 12,
     speed: 8 + i * 3
   }));
+  leaves = [
+    { top: 8,  dur: 10, delay: 0,   size: 1.0,  type: 'green' },
+    { top: 20, dur: 14, delay: -3,  size: 0.7,  type: 'dried' },
+    { top: 32, dur: 12, delay: -7,  size: 0.85, type: 'green' },
+    { top: 45, dur: 16, delay: -2,  size: 0.6,  type: 'dried' },
+    { top: 55, dur: 11, delay: -9,  size: 0.9,  type: 'dried' },
+    { top: 65, dur: 18, delay: -5,  size: 0.55, type: 'green' },
+    { top: 75, dur: 13, delay: -1,  size: 0.75, type: 'dried' },
+    { top: 85, dur: 15, delay: -6,  size: 0.65, type: 'green' },
+  ];
   stars = Array.from({ length: 120 }, () => ({
     x: Math.random() * 100,
     y: Math.random() * 60,

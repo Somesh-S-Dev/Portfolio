@@ -50,17 +50,31 @@ export class AppComponent implements OnInit {
   }
 
   private initScrollReveal() {
-    setTimeout(() => {
-      const observer = new IntersectionObserver(
-        (entries) => entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-          }
-        }),
-        { threshold: 0.08 }
-      );
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    }, 300);
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      }),
+      { threshold: 0.08 }
+    );
+
+    const observed = new WeakSet<Element>();
+
+    const scan = () => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        if (!observed.has(el)) {
+          observed.add(el);
+          observer.observe(el);
+        }
+      });
+    };
+
+    // Staggered scans to catch async-loaded content (GitHub API, etc.)
+    setTimeout(scan, 200);
+    setTimeout(scan, 1000);
+    setTimeout(scan, 2500);
+    setTimeout(scan, 5000);
   }
 
   private listenForEscape() {

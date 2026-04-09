@@ -19,12 +19,16 @@
     <div class="rain-mist"></div>
   </ng-container>
 
-  <!-- Breeze: Flowing air + leaf -->
+  <!-- Breeze: Floating green and dried leaves -->
   <ng-container *ngIf="themeService.weather() === 'breeze'">
-    <div *ngFor="let s of streams; let i = index" class="air-stream" [style.--i]="i" [style.--top]="s.top + '%'"
-      [style.--speed]="s.speed + 's'"></div>
-    <div class="leaf" [style.--leaf-dur]="'12s'"></div>
-    <div class="leaf leaf-2" [style.--leaf-dur]="'18s'"></div>
+    <div *ngFor="let l of leaves; let i = index"
+      class="leaf"
+      [class.leaf-dried]="l.type === 'dried'"
+      [style.--leaf-dur]="l.dur + 's'"
+      [style.--leaf-delay]="l.delay + 's'"
+      [style.--leaf-top]="l.top + '%'"
+      [style.--leaf-scale]="l.size">
+    </div>
   </ng-container>
 
   <!-- Snow: Snowflakes -->

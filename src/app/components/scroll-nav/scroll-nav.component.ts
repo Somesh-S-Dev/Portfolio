@@ -30,6 +30,6 @@ export class ScrollNavComponent {
 
   openLinkedIn() {
     const p = this.profile();
-    if (p?.linkedin) window.open(p.linkedin + '/messaging/compose', '_blank');
+    if (p?.linkedin) window.open(p.linkedin);
   }
 }

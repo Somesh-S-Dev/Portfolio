@@ -2,6 +2,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 .cert-card {
@@ -51,6 +56,10 @@
   flex-direction: column;
   gap: 10px;
   height: 100%;
+
+  @media (max-width: 480px) {
+    padding: 20px 18px;
+  }
 }
 
 .cert-icon {
@@ -129,6 +138,10 @@
   max-height: 90vh;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 480px) {
+    max-width: 96vw;
+  }
 }
 
 .cert-full-img {

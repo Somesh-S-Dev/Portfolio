@@ -19,6 +19,10 @@
   overflow: hidden;
   border-radius: var(--radius-lg);
 
+  @media (max-width: 480px) {
+    padding: 28px 20px;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -239,6 +243,10 @@
 .job-panel {
   padding: 32px 28px;
   border-radius: var(--radius-lg);
+
+  @media (max-width: 480px) {
+    padding: 24px 18px;
+  }
 }
 
 .job-details {

@@ -4,6 +4,10 @@
   gap: 0;
   position: relative;
   padding-left: 48px;
+
+  @media (max-width: 480px) {
+    padding-left: 24px;
+  }
 }
 
 .exp-entry {
@@ -19,6 +23,10 @@
   align-items: center;
   justify-content: center;
 
+  @media (max-width: 480px) {
+    left: -24px;
+  }
+
   .node-dot {
     width: 16px;
     height: 16px;
@@ -26,6 +34,11 @@
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px var(--glass-border), 0 0 20px var(--accent-glow);
     animation: pulse-glow 3s ease-in-out infinite;
+
+    @media (max-width: 480px) {
+      width: 12px;
+      height: 12px;
+    }
   }
 }
 
@@ -36,12 +49,21 @@
   bottom: -40px;
   width: 2px;
   background: linear-gradient(180deg, var(--accent-1), transparent);
+
+  @media (max-width: 480px) {
+    left: -19px;
+  }
 }
 
 .exp-card {
   border-radius: var(--radius-lg);
   padding: 36px;
   transition: transform 0.4s ease, box-shadow 0.4s;
+
+  @media (max-width: 480px) {
+    padding: 20px 16px;
+    border-radius: var(--radius-md);
+  }
 
   &:hover {
     transform: translateX(8px);
@@ -56,6 +78,11 @@
   gap: 24px;
   margin-bottom: 16px;
   flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 
 .company-info {
@@ -137,6 +164,11 @@
   align-items: center;
   gap: 10px;
   font-family: var(--font-display);
+
+  @media (max-width: 480px) {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
 }
 
 .date-from, .date-to {
@@ -303,6 +335,10 @@
   max-height: 90vh;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 480px) {
+    max-width: 96vw;
+  }
 }
 
 .proof-full-img {

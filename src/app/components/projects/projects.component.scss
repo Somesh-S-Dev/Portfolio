@@ -63,6 +63,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 .project-card {
@@ -139,6 +144,7 @@
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   height: 4.5em;
@@ -204,6 +210,11 @@
   flex-direction: column;
   animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
   box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 480px) {
+    max-width: 96vw;
+    border-radius: var(--radius-lg);
+  }
 }
 
 .popup-header {
@@ -260,6 +271,11 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @media (max-width: 480px) {
+    padding: 20px 16px;
+    gap: 16px;
+  }
 }
 
 .full-desc {
@@ -401,6 +417,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 .skeleton-card {

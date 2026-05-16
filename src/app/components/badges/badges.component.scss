@@ -11,6 +11,11 @@
   gap: 32px;
   justify-content: flex-start;
   align-items: flex-end;
+
+  @media (max-width: 480px) {
+    gap: 16px;
+    justify-content: center;
+  }
 }
 
 .badge-item {
@@ -63,6 +68,12 @@
   box-shadow:
     0 4px 16px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 var(--emboss-light);
+
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+  }
 }
 
 .badge-image {

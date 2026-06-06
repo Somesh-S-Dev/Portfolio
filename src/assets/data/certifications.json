@@ -1,6 +1,6 @@
 [
   {
-    "id": "cert1",
+    "id": "cert2",
     "title": "Claude Code In Action",
     "provider": "Anthropic",
     "issueDate": "2026-03-30",
@@ -10,7 +10,7 @@
     "bgImage": "assets/images/certifications/bg_image/anthropic.png"
   },
   {
-    "id": "cert2",
+    "id": "cert1",
     "title": "Model Context Protocol:Advanced Topics",
     "provider": "Anthropic",
     "issueDate": "2026-03-27",

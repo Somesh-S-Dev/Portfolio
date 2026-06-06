@@ -17,7 +17,18 @@ export class ExperienceComponent implements OnInit {
   isClosing = signal(false);
 
   ngOnInit() {
-    this.dataService.getExperience().subscribe(e => this.experiences.set(e));
+    this.dataService.getExperience().subscribe(e => {
+      const sorted = [...e].sort((a, b) => {
+        const numA = parseInt(a.id.replace(/\D/g, ''), 10) || 0;
+        const numB = parseInt(b.id.replace(/\D/g, ''), 10) || 0;
+        
+        const valA = numA === 0 ? Infinity : numA;
+        const valB = numB === 0 ? Infinity : numB;
+        
+        return valB - valA;
+      });
+      this.experiences.set(sorted);
+    });
   }
 
   formatDate(date: string | null): string {

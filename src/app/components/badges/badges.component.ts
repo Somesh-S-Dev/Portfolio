@@ -17,7 +17,7 @@ export class BadgesComponent implements OnInit {
   tooltipPos = signal({ x: 0, y: 0 });
 
   ngOnInit() {
-    this.dataService.getBadges().subscribe(b => this.badges.set(b));
+    this.dataService.getBadges().subscribe(b => this.badges.set([...b].reverse()));
   }
 
   onBadgeHover(badge: Badge, event: MouseEvent) {

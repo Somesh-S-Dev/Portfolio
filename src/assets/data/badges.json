@@ -1,6 +1,6 @@
 [
   {
-    "id": "badge1",
+    "id": "badge4",
     "title": "Generative AI Essentials",
     "issuer": "IBM Skillsbuild",
     "earnedDate": "2026-02",
@@ -9,7 +9,7 @@
     "description": "This credential earner has an understanding of the fundamentals of data classification using IBM tools and can demonstrate how large language models can be applied to practical tasks, such as generating meeting summaries and classifying customer reviews."
   },
   {
-    "id": "badge2",
+    "id": "badge3",
     "title": "Agentic AI Fundamentals",
     "issuer": "Intel",
     "earnedDate": "2025-09",
@@ -18,7 +18,7 @@
     "description": "Earners of this badge have demonstrated knowledge, understanding, and proficiency of Intel's value proposition for agents and agentic AI. The skills acquired have prepared them to drive business value through practical tools and frameworks for efficient agent development and deployment."
   },
   {
-    "id": "badge3",
+    "id": "badge2",
     "title": "Cyber Threat Management",
     "issuer": "CISCO",
     "earnedDate": "2025-08",
@@ -27,7 +27,7 @@
     "description": "Cisco verifies the earner of this badge successfully completed the Cyber Threat Management course. The holder of this student-level credential is familiar with cybersecurity policies and governance to ensure an organization complies with ethics standards and legal and regulatory frameworks."
   },
   {
-    "id": "badge4",
+    "id": "badge1",
     "title": "Cybersecurity Fundamentals",
     "issuer": "IBM Skillsbuild",
     "earnedDate": "2025-08",

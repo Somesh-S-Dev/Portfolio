@@ -183,8 +183,16 @@
 
 .date-to.present .date-val {
   color: var(--accent-3);
-  animation: pulse-glow 2s ease infinite;
-  filter: drop-shadow(0 0 6px var(--accent-3));
+  animation: pulse-text-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-text-glow {
+  0%, 100% {
+    text-shadow: 0 0 8px var(--accent-3);
+  }
+  50% {
+    text-shadow: 0 0 16px var(--accent-3), 0 0 24px var(--accent-3);
+  }
 }
 
 .date-arrow {

@@ -17,7 +17,7 @@ export class CertificationsComponent implements OnInit {
   isClosing = signal(false);
 
   ngOnInit() {
-    this.dataService.getCertifications().subscribe(c => this.certs.set(c));
+    this.dataService.getCertifications().subscribe(c => this.certs.set([...c].reverse()));
   }
 
   openCert(cert: Certification) {

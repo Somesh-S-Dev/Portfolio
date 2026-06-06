@@ -29,12 +29,29 @@ export class ExperienceComponent implements OnInit {
   getDuration(from: string, to: string | null): string {
     const start = new Date(from);
     const end = to ? new Date(to) : new Date();
-    const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-    const y = Math.floor(months / 12);
-    const m = months % 12;
+    
+    // Normalize to midnight to avoid daylight saving time offset issues
+    const startDate = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+    const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+    
+    const diffTime = endDate.getTime() - startDate.getTime();
+    const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 to include both start and end days
+    
+    const fullMonths = Math.floor(diffDays / 30);
+    const remainingDays = diffDays % 30;
+    
+    let totalMonths = fullMonths;
+    if (remainingDays >= 15) {
+      totalMonths += 0.5;
+    }
+    
+    const y = Math.floor(totalMonths / 12);
+    const m = totalMonths % 12;
+    
     let s = '';
     if (y > 0) s += `${y}y `;
     if (m > 0) s += `${m}m`;
+    
     return s.trim() || '< 1m';
   }
 

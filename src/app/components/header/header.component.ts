@@ -51,9 +51,24 @@ export class HeaderComponent implements OnInit {
   computeTenure(doj: string) {
     const start = new Date(doj);
     const now = new Date();
-    const months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
-    const y = Math.floor(months / 12);
-    const m = months % 12;
+    
+    const startDate = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+    const endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    
+    const diffTime = endDate.getTime() - startDate.getTime();
+    const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24)) + 1;
+    
+    const fullMonths = Math.floor(diffDays / 30);
+    const remainingDays = diffDays % 30;
+    
+    let totalMonths = fullMonths;
+    if (remainingDays >= 15) {
+      totalMonths += 0.5;
+    }
+    
+    const y = Math.floor(totalMonths / 12);
+    const m = totalMonths % 12;
+    
     let t = '';
     if (y > 0) t += `${y}yr `;
     if (m > 0) t += `${m}mo`;

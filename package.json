@@ -1,6 +1,11 @@
 {
   "name": "portfolio",
-  "version": "0.0.0",
+  "author": {
+    "email": "kamatchisomeh@gmail.com",
+    "name": "Kamatchi Somesh",
+    "url": "https://portfolio-somesh.web.app/"
+  },
+  "version": "2.1.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
